@@ -183,10 +183,9 @@ input[type=submit]:hover {
 }
 
 /* Form elememt */
-form.contact {
-	float: right; 
+form { 
 	border-radius: 5px; 
-	background-color: #f2f2f2;
+	background-color: rgb(203, 221, 154);
 	padding: 20px;
 	font-family: "Impact", Charcoal, sans-serif;
 }
