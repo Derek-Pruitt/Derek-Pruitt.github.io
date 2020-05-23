@@ -79,25 +79,51 @@
 <!-- Contact section -->
 	<div class="Row" id="Contact"> 
 		<div class="Column_3"> 
-			<img src="./images/Frog.png" alt="Contact_Image">
-		</div>
+		<form name="contact" method="post">
+		<label>Name</label>
+		<input type="text" name="name" />
+		<label>Subject</label>
+		<input type="text" name="subject" />
+		<label>Phone Number</label>
+		<input type="text" name="phone" />
+		<label>Message</label>
+		<textarea name="message"></textarea>
 	
-		<div class="Column_1">
-			<h1>Contact</h1> 
-			<form method="post" name="contact_form"
-			action="contact-form-handler.php">
-    Your Name:
-    <input type="text" name="name">
+		<input type="submit" name="send" value="Send Message" />
+	</form>
+	<script>
+	var form = document.forms["contact"];
+	form.addEventListener('submit',contact_submit,false);
 
-    Email Address:
-    <input type="text" name="email">
+	function contact_submit(e) {
+		// Stop Form From Submitting
+		e.preventDefault();
 
-    Message:
-    <textarea name="message"></textarea>
+		// Set Initial Variables
+		var target = e.target || e.srcElement;
+		var to = 'cookies.derek@gmail.com';
+		var uri = 'mailto:' + to;
+		var body = '';
 
-    <input type="submit" value="Submit">
-</form>	
+		// Set Form Values to Variables
+		var name = target.elements['name'].value;
+		var subject = target.elements['subject'].value;
+		var phone = target.elements['phone'].value;
+		var message = target.elements['message'].value;
 
+		// Build Body / Message with all Input Fields
+		body += message + "\r\n\r\n";
+		body += "Name: " + name + "\r\n";
+		body += "Phone Number: " + phone + "\r\n";
+
+		// Build final Mailto URI
+		uri += '?subject=' + encodeURIComponent(subject);
+		uri += '&body=' + encodeURIComponent(body);
+
+		// Open Mailto in New Window / Tab
+		window.open(uri,'_blank');
+	}
+	</script>
 		</div>
 	</div>
 	
