@@ -31,5 +31,5 @@ $(document).ready(function() {
   
   function closeForm() {
     document.getElementById("myForm").style.display = "none";
-    this.close();
+    this.closeForm();
   }
