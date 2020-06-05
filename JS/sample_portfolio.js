@@ -14,7 +14,7 @@ $(document).ready(function() {
         // Using jQuery's animate() method to add smooth page scroll
         // The optional number (2000) specifies the number of milliseconds it takes to scroll to the specified area
         $('html, body').animate({
-          scrollTop: $(Link).offset().top
+          scrollTop: $(Link).offset().top()
         }, 2000, function(){
      
           // Add Link (#) to URL when done scrolling (default click behavior)
