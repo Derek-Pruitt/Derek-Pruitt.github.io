@@ -5,143 +5,211 @@
 	<head>
 		<meta charset="UTF-8">
 		<title>Derek Pruitt</title>
-		<link rel="stylesheet" type="text/css" href="./css/stylesheet.css">
+		  <link rel="stylesheet" type="text/css" href="./css/sample_Portfolio.css">
+		  <script src="./JS/sample_Portfolio.js"></script>
+		  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script> <!-- We use a little bit of jQuery on this site now -->
 	</head>
 
 <!-- Body -->
 <body class="Background"> 
+<!-- Fade in effect -->
+<script> <!-- This script and function controls our fade in effect -->
+  document.body.className += ' fade-out';
+    $(function() {
+      $('body').removeClass('fade-out');
+    }
+  );
+
+</script>
 
 <!-- Navbar -->
 	<div class="Navbar">
 		<a class="active" href="#Home">Home</a> 
+		<a href="#Slideshow">Slideshow</a> <!-- This is a new section -->
 		<a href="#About">About</a>
 		<a href="#GitHub">GitHub</a>
-		<a href="#Contact">Contact</a>
+		<a onclick="openForm()">Contact</a> <!-- This makes it so that our openForm function runs when we click Contact on the nav bar -->
 	</div>
 
-<!-- Home -->
-		<br> 
-		<br>
+<!-- This allows us to close the form when we click outside the nav bar or contact form -->
+<div class="btn cancel" onclick="closeForm()">
 
-<!-- Video -->
+<!-- Home -->
 	<div id="Home">
-		<video autoplay muted loop id="Ax_Video"> 
+		<br> <!-- Breaks inserted to add space between navbar and first heading -->
+		<br>
+		
+<!-- Video -->
+		<video autoplay muted loop id="Typing_Video"> <!-- Makes the video play automatically, on a loop and with no sound -->
 			<source src="./video/ax50.mp4" type="video/mp4">
-			Your browser does not support HTML5 video. 
+			Your browser does not support HTML5 video. <!-- Display message if video fails to run -->
 		</video>
 	</div>
 
 <!-- Video text --> 
 	<div class="Video_Text"> 
-		<h1 style="color:rgb(203, 221, 154);">Derek Pruitt's Portfolio</h1>
+		<h1 style="color:seashell;">Derek Pruitt's Portfolio</h1>
 			<p> 
-				<strong>
+			  <strong>
 					<center>
 						<q>Being human totally sucks most of the time. 
-						<br>Videogames are the only thing that
-							make life bearable.
-						</q>	
-						<br>― Ernest Cline, Ready Player One<br>
-						<br>
-						My name is Derek Pruitt. Welcome to my portfolio website. On it, I will tell you about my background and experience.<br>
+							<br>Videogames are the only thing that
+								make life bearable.
+							</q>	
+							<br>― Ernest Cline, Ready Player One<br>
+							<br>
+						My name is Derek. Welcome to my portfolio website. <br>
+						On it, I will tell you about my background and experience.<br>
 						<br>Thank you for stopping by and enjoy! 
-						
 					</center>	
-				</strong>
+			  </strong>				
 			</p> 
 	</div>
 
+<!-- Slideshow section -->
+  <div id="Slideshow">
+    <div id="Slideshow_Background"> 
+      <div id="Slideshow_Container">
+        
+		<div class="mySlides fade">
+          <div class="Slide_Number">1 / 6</div>
+            <img class="Slide_Show_Images" src="./images/Derek.jpg" style="width:100%;">
+              <div class="text">I'm available to assist you on your project!</div>
+        </div>
+        
+		<div class="mySlides fade">
+          <div class="Slide_Number">2 / 6</div>
+            <img class="Slide_Show_Images" src="./images/HTML_CSS_and_JavaScript.jpeg" style="width:100%">
+              <div class="text">I am in training to become a full-stack software developer,<br>as of now I am trained in:<br>HTML, CSS, JavaScript,</div>
+        </div>
+
+        <div class="mySlides fade">
+          <div class="Slide_Number">3 / 6</div>
+            <img class="Slide_Show_Images" src="./images/Python.png" style="width:100%">
+              <div class="text">Up next i will be learning<br>the popular programming language Python,</div>
+        </div>
+
+        <div class="mySlides fade">
+          <div class="Slide_Number">4 / 6</div>
+            <img class="Slide_Show_Images" src="./images/C_Sharp_and_Dot_NET.png" style="width:100%">
+              <div class="text">C#, .NET Framework, ASP.NET, MVC,</div>
+        </div>
+
+		<div class="mySlides fade">
+	      <div class="Slide_Number">5 / 6</div>
+			<img class="Slide_Show_Images" src="./images/SQL_and_Database.jpg" style="width:100%">
+              <div class="text">back end development, databases and SQL.</div>
+			</div>
+
+		<div class="mySlides fade">
+		  <div class="Slide_Number">6 / 6</div>
+			<img class="Slide_Show_Images" src="./images/coding_2.jpg" style="width:100%">
+			  <div class="text"> 
+				<a onclick="openForm()" href="#Contact" style="color:seashell;">Contact me!</a>
+			  </div>
+	    </div>
+	
+		  <a class="Previous" onclick="plusSlides(-1)">&#10094;</a>
+		  <a class="Next" onclick="plusSlides(1)">&#10095;</a>
+		
+	  </div>
+  <br>
+
+      <div style="text-align:center">
+ 
+		<span class="dot" onclick="currentSlide(1)"></span> 
+		<span class="dot" onclick="currentSlide(2)"></span> 
+		<span class="dot" onclick="currentSlide(3)"></span> 
+		<span class="dot" onclick="currentSlide(4)"></span> 
+		<span class="dot" onclick="currentSlide(5)"></span> 
+		<span class="dot" onclick="currentSlide(6)"></span> 
+
+      </div>
+    </div>
+  </div>
+
+<!-- Included JS function within this file to ensure it was given precedence, this function covers the slideshow -->
+  <script>
+    var slideIndex = 1;
+	  showSlides(slideIndex);
+	function plusSlides(n) {
+	  showSlides(slideIndex += n);
+	}
+	function currentSlide(n) {
+	  showSlides(slideIndex = n);
+	}
+	function showSlides(n) {
+	  var i;
+	  var slides = document.getElementsByClassName("mySlides");
+	  var dots = document.getElementsByClassName("dot");
+		if (n > slides.length) {slideIndex = 1}    
+		if (n < 1) {slideIndex = slides.length}
+		  for (i = 0; i < slides.length; i++) {
+		  slides[i].style.display = "none";  
+		  }
+		  for (i = 0; i < dots.length; i++) {
+			dots[i].className = dots[i].className.replace(" active", "");
+		  }
+	  slides[slideIndex-1].style.display = "block";  
+	  dots[slideIndex-1].className += " active";
+	}
+  </script>
+
 <!-- About section -->
-	<div class="Row" id="About"> 
-		<div class="Column_2"> 
-			<img src="./images/Derek.png" alt="Frog and keyboards">
-		</div>
-  
-		<div class="Column_1"> 
-			<h1>About</h1>
-				<p>I am a software developer who loves to code! I unwind by learning new things and playing Xbox.<br><br>I am in the <a href="https://www.learncodinganywhere.com" target="_blank">The Tech Academy</a>’s Software Developer Boot Camp, and trained and experienced in the following web and programming languages: HTML, CSS. I am interseted in web Development, although I love working on sites I really want to design and create video games.<br>I am a front-end developer so far and would love to work with you on your project. <a href="#Contact">Contact</a> me below!</p>
-		</div>
+  <div class="Row" id="About"> 
+	<div class="Column_2"> <!-- Left column -->
+	  <img src="./images/wyoming6.png" alt="Infinity Ward">
 	</div>
+  
+	<div class="Column_1"> <!-- Right column -->
+	  <h1>About</h1>
+	  <center>
+		<p>I am a software developer who loves to code! I would love to work with you on your project. I would also love to contribute to a video game.<br>I live in Laramie, WY. I am open to remote projects or in person.<br>I am currently going through the tech academyies full stack software developer bootcamp. <a href="#Contact">Contact</a> me below!</p>
+	</center>
+	</div>
+  </div>
 
 <!-- GitHub section -->
 	<div class="Row" id="GitHub">
-		<div class="Column_1">
+		<div class="Column_1"> <!-- Left column -->
 			<h1>GitHub</h1>
-				<p>Please feel free to take a look at the projects I have done so far:<br>
-				<center><a href="https://github.com/the-tech-academy" target="_blank">The Tech Academy GitHub</a></center></p>
+				<p>You can view my coding projects on my GitHub profile here:<br>
+				<center><a href="https://github.com/Derekhunterrc0001" target="_blank">Derekhunterrc0001 GitHub</a></center></p>
 		</div>
 		
-		<div class="Column_2"> 
-			<a href="https://github.com/the-tech-academy" target="_blank"><img src="./images/GitHub.png" alt="GitHub"></a>
+		<div class="Column_2"> <!-- Right column -->
+			<a href="https://github.com/Derekhunterrc0001" target="_blank"><img src="./images/Frog.png" alt="GitHub"></a>
 		</div>
 	</div>
+</div>
 
 <!-- Contact section -->
-	<div class="Row" id="Contact"> 
-		<div class="Column_3"> 
-		<form name="contact" method="post">
-		<label>Name</label>
-		<input type="text" name="name" />
-		<label>Subject</label>
-		<input type="text" name="subject" />
-		<label>Phone Number</label>
-		<input type="text" name="phone" />
-		<label>Message</label>
-		<textarea name="message"></textarea>
+  <div id="Contact"> 
+    <button onclick="openForm()" class="Pop_Up_Button"> CONTACT </button>
+	  <div class="form-popup" id="myForm">
+	    <form action="https://formspree.io/myynwndv" method="POST" class="form-container"> <!-- Here we are using a free online service from https://formspree.io/ to send our contact form to an email address of our choosing - note: it will not run unless live on the internet, you have to push it to your online website first -->
+		<h1>Contact</h1>
+			<label for="name"><b>Name</b></label>
+			  <input type="text" placeholder="Type your name here" name="name" required>
+			<label for="phone"><b>Phone</b></label>
+			  <input type="text" placeholder="Enter your phone number here" name="phone">
+			<label for="email"><b>Email</b></label>		
+			  <input type="text" placeholder="Type your email address here" name="email" required>
+			<label for="message"><b>Message</b></label>
+			  <input type="text" placeholder="Type your message here" name="message">
+ 
+    <button type="submit" class="btn">SUBMIT</button>
+    <button type="button" class="btn cancel" onclick="closeForm()">CLOSE</button>
+	    </form>
+	  </div>
+  </div>
 	
-		<input type="submit" name="send" value="Send Message" />
-	</form>
-	<script>
-	var form = document.forms["contact"];
-	form.addEventListener('submit',contact_submit,false);
-
-	function contact_submit(e) {
-		// Stop Form From Submitting
-		e.preventDefault();
-
-		// Set Initial Variables
-		var target = e.target || e.srcElement;
-		var to = 'cookies.derek@gmail.com';
-		var uri = 'mailto:' + to;
-		var body = '';
-
-		// Set Form Values to Variables
-		var name = target.elements['name'].value;
-		var subject = target.elements['subject'].value;
-		var phone = target.elements['phone'].value;
-		var message = target.elements['message'].value;
-
-		// Build Body / Message with all Input Fields
-		body += message + "\r\n\r\n";
-		body += "Name: " + name + "\r\n";
-		body += "Phone Number: " + phone + "\r\n";
-
-		// Build final Mailto URI
-		uri += '?subject=' + encodeURIComponent(subject);
-		uri += '&body=' + encodeURIComponent(body);
-
-		// Open Mailto in New Window / Tab
-		window.open(uri,'_blank');
-	}
-	</script>
-		</div>
-	</div>
-	
-<!-- Footer section -->
+<!-- Footer section -->	
 	<footer>
-		<p>
-			<br>
-			<br>
-			<center>&copy Prosper Consulting Inc.,  <a href="https://learncodinganywhere.com/">The Tech Academy</a></center><br>
-		</p>
+	  <p>
+	    <center>&copy Developer Derek Pruitt.</center><br>
+      </p>
 	</footer>
-	<script language="JavaScript">
-		var frmvalidator  = new Validator("contactform");
-		frmvalidator.addValidation("name","req","Please provide your name");
-		frmvalidator.addValidation("email","req","Please provide your email");
-		frmvalidator.addValidation("email","email",
-		  "Please enter a valid email address");
-		</script>
-		</body>
 
+</body>
 </html>
