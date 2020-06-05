@@ -1,6 +1,6 @@
 // The following function adds a smooth scrolling to all links
 
-$(document).ready(function(){   
+$(document).ready(function() {   
     $("a").on('click', function(event) {
         
       // Make sure this.Link has a value before overriding default behavior
@@ -31,5 +31,5 @@ $(document).ready(function(){
   
   function closeForm() {
     document.getElementById("myForm").style.display = "none";
-    this.Close();
+    this.close();
   }
